@@ -23,7 +23,7 @@ def main():
         model = LanguageModel(
             model_name=args.model,
             model_repr=args.model,
-            model_style=LMStyle.OpenAIGeneric,
+            model_style=LMStyle.OpenAIChat,
             release_date=None,
             link=None
         )

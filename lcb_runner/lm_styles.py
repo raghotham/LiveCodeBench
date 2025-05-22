@@ -7,7 +7,6 @@ class LMStyle(Enum):
     OpenAIChat = "OpenAIChat"
     OpenAIReasonPreview = "OpenAIReasonPreview"
     OpenAIReason = "OpenAIReason"
-    OpenAIGeneric = "OpenAIGeneric"  # For any OpenAI-compatible endpoint
 
     Claude = "Claude"  # Claude 1 and Claude 2
     Claude3 = "Claude3"

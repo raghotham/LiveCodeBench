@@ -42,16 +42,6 @@ class OpenAIRunner(BaseRunner):
                 self.client_kwargs: dict[str | str] = {
                     "model": args.model,
                 }
-        elif model.model_style == LMStyle.OpenAIGeneric:
-            # For generic OpenAI-compatible endpoints, use minimal configuration
-            self.client_kwargs: dict[str | str] = {
-                "model": args.model,
-                "temperature": args.temperature,
-                "max_tokens": args.max_tokens,
-                "top_p": args.top_p,
-                "n": args.n,
-                "timeout": args.openai_timeout,
-            }
         else:
             self.client_kwargs: dict[str | str] = {
                 "model": args.model,
