@@ -28,20 +28,14 @@ class OpenAIRunner(BaseRunner):
                 "max_completion_tokens": 25000,
             }
         elif model.model_style == LMStyle.OpenAIReason:
-            # Only check for reasoning effort if using OpenAI's official models
-            if base_url == "https://api.openai.com/v1":
-                assert (
-                    "__" in args.model
-                ), f"Model {args.model} is not a valid OpenAI Reasoning model as we require reasoning effort in model name."
-                model, reasoning_effort = args.model.split("__")
-                self.client_kwargs: dict[str | str] = {
-                    "model": model,
-                    "reasoning_effort": reasoning_effort,
-                }
-            else:
-                self.client_kwargs: dict[str | str] = {
-                    "model": args.model,
-                }
+            assert (
+                "__" in args.model
+            ), f"Model {args.model} is not a valid OpenAI Reasoning model as we require reasoning effort in model name."
+            model, reasoning_effort = args.model.split("__")
+            self.client_kwargs: dict[str | str] = {
+                "model": model,
+                "reasoning_effort": reasoning_effort,
+            }
         else:
             self.client_kwargs: dict[str | str] = {
                 "model": args.model,
@@ -58,7 +52,7 @@ class OpenAIRunner(BaseRunner):
         assert isinstance(prompt, list)
 
         try:
-            response = self.client.chat.completions.create(
+            response = OpenAIRunner.client.chat.completions.create(
                 messages=prompt,
                 **self.client_kwargs,
             )
