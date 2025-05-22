@@ -14,7 +14,7 @@ from lcb_runner.runner.base_runner import BaseRunner
 class OpenAIRunner(BaseRunner):
     def __init__(self, args, model):
         super().__init__(args, model)
-        
+
         # Initialize client with custom base URL if provided
         base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
         self.client = OpenAI(
@@ -46,6 +46,7 @@ class OpenAIRunner(BaseRunner):
                 "presence_penalty": 0,
                 "n": args.n,
                 "timeout": args.openai_timeout,
+                # "stop": args.stop, --> stop is only used for base models currently
             }
 
     def _run_single(self, prompt: list[dict[str, str]]) -> list[str]:

@@ -31,7 +31,7 @@ def main():
         model = LanguageModelStore[args.model]
 
     benchmark, format_prompt = build_prompt_benchmark(args)
-    
+
     # Log the number of examples being run
     total_examples = len(benchmark)
     if args.max_examples is not None:
@@ -246,7 +246,6 @@ def main():
         print(f"1. Main output: {output_path}")
         print(f"2. Evaluation results: {eval_file}")
         print(f"3. Detailed evaluation: {eval_all_file}")
-
 
 if __name__ == "__main__":
     main()
